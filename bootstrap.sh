@@ -18,6 +18,13 @@ if [[ "$RELEASE" != "xenial" ]] && [[ "$RELEASE" != "bionic" ]]; then
     RELEASE="bionic"
 fi
 
+# Workaround occasional freezes when resizing windows, etc[1]. It is marked as fixed and fresh installs appear to be
+# using a later linux-raspi version, but I still encountered the issue.
+#   1: https://bugs.launchpad.net/ubuntu/+source/linux-raspi/+bug/1946368
+sudo sed -i \
+    -e 's/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-fkms-v3d/g' \
+    /boot/firmware/config.txt
+
 # Install MinKNOW software
 sudo apt update
 sudo apt install -y apt-transport-https gnupg2 wget
@@ -63,5 +70,7 @@ sudo sed -i -e 's/User=.*/User=root/g' -e 's/Group=.*/Group=root/g' /usr/lib/sys
 
 sudo systemctl enable minknow.service
 sudo systemctl restart minknow.service
+
+ln -s /usr/share/applications/minknow.desktop /home/nanopi/Desktop/minknow.desktop
 
 echo "Done!"
