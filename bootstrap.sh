@@ -56,6 +56,8 @@ sudo sed -i \
     /usr/bin/minknow_ui_start.sh \
     /usr/share/applications/minknow.desktop
 
+sudo sed -i -e 's/User=.*/User=root/g' -e 's/Group=.*/Group=root/g' /usr/lib/systemd/system/minknow.service
+
 sudo systemctl enable minknow.service
 sudo systemctl restart minknow.service
 
