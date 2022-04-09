@@ -35,6 +35,8 @@ sudo apt install -y \
     ont-vbz-hdf-plugin
 
 # Configure data and log directories
+sudo mkdir -p "$DATA_DIR/data"
+sudo mkdir -p "$DATA_DIR/logs"
 sudo /opt/ont/minknow/bin/config_editor --conf user \
   --filename /opt/ont/minknow/conf/user_conf \
   --set output_dirs.base="$DATA_DIR/data" \
