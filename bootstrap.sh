@@ -37,13 +37,16 @@ sudo apt install -y \
 # Configure data and log directories
 sudo mkdir -p "$DATA_DIR/data"
 sudo mkdir -p "$DATA_DIR/logs"
-sudo /opt/ont/minknow/bin/config_editor --conf user \
+sudo /opt/ont/minknow/bin/config_editor \
+  --conf user \
   --filename /opt/ont/minknow/conf/user_conf \
   --set output_dirs.base="$DATA_DIR/data" \
   --set output_dirs.logs="$DATA_DIR/logs"
 
 # Configure MinKNOW (override MinIONMK1C defaults)
-sudo sed -i -e 's/Serial=.*/Serial=nanopi/g' /etc/oxfordnanopore/configs/identity.config
+sudo sed -i \
+    -e 's/Serial=.*/Serial=nanopi/g' \
+    /etc/oxfordnanopore/configs/identity.config
 sudo sed -i \
     -e 's/"device_type":.*/"device_type": "MinION",/' \
     -e 's/"host_type":.*/"host_type": "PC",/' \
