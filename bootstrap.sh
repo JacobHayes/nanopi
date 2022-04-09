@@ -51,5 +51,5 @@ sudo sed -i \
     -e 's/--hide-mouse-cursor//g' \
     -e 's/--keyboard//g' \
     -e 's/--zoom-factor 2/--zoom-factor 1/g' \
-    /etc/xprofile \
+    /usr/bin/minknow_ui_start.sh \
     /usr/share/applications/minknow.desktop
