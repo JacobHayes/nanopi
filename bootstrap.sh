@@ -44,7 +44,7 @@ sudo /opt/ont/minknow/bin/config_editor --conf user \
 sudo sed -i -e 's/Serial=.*/Serial=nanopi/g' /etc/oxfordnanopore/configs/identity.config
 sudo sed -i \
     -e 's/"device_type":.*/"device_type": "MinION",/' \
-    -e 's/"host_type":.*/"host_type": "nanopi",/' \
+    -e 's/"host_type":.*/"host_type": "PC",/' \
     /opt/ont/minknow/conf/app_conf
 
 sudo sed -i \
@@ -56,3 +56,5 @@ sudo sed -i \
 
 sudo systemctl enable minknow.service
 sudo systemctl restart minknow.service
+
+echo "Done!"
