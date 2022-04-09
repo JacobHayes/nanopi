@@ -53,3 +53,6 @@ sudo sed -i \
     -e 's/--zoom-factor 2/--zoom-factor 1/g' \
     /usr/bin/minknow_ui_start.sh \
     /usr/share/applications/minknow.desktop
+
+sudo systemctl enable minknow.service
+sudo systemctl restart minknow.service
